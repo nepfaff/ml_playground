@@ -9,28 +9,30 @@ import matplotlib.pyplot as plt
 
 def get_autoencoder_original_reconstructed_pairs(
     model: nn.Module, dataloader: DataLoader, device: str
-) -> Tuple[np.ndarray, np.ndarray]:
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     :param model: The model to train.
     :param dataloader: The data loader that contains the test data.
     :param device: The device to train on. Either "cuda" or "cpu". The model should already be on this device.
-    :return: A tuple of (originals, reconstructed) where both originals and reconstructed have shape (n,x,y) where (x,y)
-        is the image dimension. The indices in originals and reconstructed correspond.
+    :return: A tuple of (originals, reconstructed, labels) where both originals and reconstructed have shape (n,x,y)
+        where (x,y) is the image dimension. labels is of shape (n,). The indices in all arrays must correspond.
     """
     original = []
     reconstructed = []
+    labels = []
     with torch.no_grad():
         model.eval()
 
-        for x, _ in dataloader:
+        for x, y in dataloader:
             x = x.to(device)
 
             x_reconstructed = model(x)
 
             original.append(x.cpu().detach().numpy())
             reconstructed.append(x_reconstructed.cpu().detach().numpy())
+            labels.append(y.cpu().numpy())
 
-    return np.array(original), np.array(reconstructed)
+    return np.array(original), np.array(reconstructed), np.array(labels)
 
 
 def plot_original_reconstructed_per_class_grayscale(
@@ -59,10 +61,10 @@ def plot_original_reconstructed_per_class_grayscale(
 
         ax = fig.add_subplot(subplot_shape[0], subplot_shape[1], subplot_idx)
         ax.imshow(X_original[first_label_idx].reshape((28, 28)), cmap="gray")
-        ax.set_title(f"Original")
+        ax.set_title(f"Original of class {int(label)}")
 
         ax = fig.add_subplot(subplot_shape[0], subplot_shape[1], subplot_idx + 1)
         ax.imshow(X_reconstruction[first_label_idx].reshape((28, 28)), cmap="gray")
-        ax.set_title(f"Reconstructed")
+        ax.set_title(f"Reconstructed of class {int(label)}")
 
         subplot_idx += 2
