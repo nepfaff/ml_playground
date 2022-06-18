@@ -51,3 +51,7 @@ def get_dense_mnist_autoencoder(encoder_dropout: float = 0.0, decoder_dropout: f
             return x
 
     return Model(encoder_dropout, decoder_dropout)
+
+
+def get_cnn_mnist_autoencoder() -> nn.Module:
+    pass
