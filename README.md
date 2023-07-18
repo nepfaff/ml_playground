@@ -1,2 +1,1 @@
-# kaggle_notebooks
-My personal Kaggle notebooks
+# ml_playground
