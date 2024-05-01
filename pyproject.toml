@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "ml-playground"
+version = "0.1.0"
+description = ""
+authors = ["Nicholas Pfaff <nepfaff@mit.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+ipython = "^8.15.0"
+numpy = "^1.26.4"
+torch = "^2.3.0"
+torchvision = "^0.18.0"
+tqdm = "^4.66.2"
+matplotlib = "^3.8.4"
+pandas = "^2.2.2"
+scikit-learn = "^1.4.2"
+vit-pytorch = "^1.6.7"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.4.0"
+black = "^23.12.1"
+isort = "^5.12.0"
+poetry-pre-commit-plugin = "^0.1.2"
+
+[tool.isort]
+profile = 'black'
+lines_between_types = 1
+combine_as_imports = true
+known_first_party = ['iiwa_setup']
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

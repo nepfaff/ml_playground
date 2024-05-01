@@ -2,19 +2,22 @@
 
 ## Installation
 
-Clone the repo and execute the following commands from the repository's root.
+This repo uses Poetry for dependency management. To set up this project, first install
+[Poetry](https://python-poetry.org/docs/#installation) and, make sure to have Python3.10
+installed on your system.
 
-Create a virtual environment:
+Then, configure poetry to set up a virtual environment that uses Python 3.10:
+```
+poetry env use python3.10
+```
+
+Next, install all the required dependencies to the virtual environment with the
+following command:
 ```bash
-python -m venv ml_playground_venv
+poetry install --no-root
 ```
 
 Activate the environment:
 ```bash
-source ml_playground_venv/bin/activate
-```
-
-Install the requirements:
-```bash
-pip install -r requirements.txt
+poetry shell
 ```

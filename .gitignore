@@ -3,3 +3,4 @@ __pycache__
 ml_playground_venv
 .vscode
 datasets
+.venv
