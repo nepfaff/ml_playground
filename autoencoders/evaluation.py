@@ -1,10 +1,11 @@
 from typing import Tuple
 
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
+
 from torch.utils.data import DataLoader
-import matplotlib.pyplot as plt
 
 
 def get_autoencoder_original_reconstructed_pairs(

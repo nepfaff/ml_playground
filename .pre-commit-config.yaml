@@ -2,8 +2,9 @@ repos:
 - repo: https://github.com/psf/black
   rev: 23.12.1 # NOTE: If updating, also update the version in .github/workflows/lint.yaml
   hooks:
-  - id: black
-    language_version: python3.10
+    - id: black-jupyter
+      types_or: ["python","jupyter"] 
+      language_version: python3.10
 
 - repo: https://github.com/pycqa/isort
   rev: 5.13.2 # NOTE: If updating, also update the version in .github/workflows/lint.yaml

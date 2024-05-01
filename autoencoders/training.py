@@ -1,9 +1,10 @@
 from typing import Callable
 
-from tqdm import tqdm
 import torch
 import torch.nn as nn
+
 from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 
 def train_autoencoder(
@@ -43,4 +44,6 @@ def train_autoencoder(
             optimizer.step()
 
         if print_loss:
-            print(f"--- Iteration {epoch+1}: training loss = {torch.Tensor(loss_curve).mean().item():.4f} ---")
+            print(
+                f"--- Iteration {epoch+1}: training loss = {torch.Tensor(loss_curve).mean().item():.4f} ---"
+            )

@@ -1,4 +1,4 @@
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 from torch.utils.data import DataLoader, random_split
 from torchvision import datasets, transforms as tra
@@ -53,7 +53,9 @@ def get_MNIST_train_validation_test_dataloaders(
     :param filepath: Path to download the datasets to.
     :return: A tuple of (train_dataloader, validation_dataloader, test_dataloader).
     """
-    assert train_split >= 0.0 and train_split <= 1.0, "train_split must be in range [0,1]"
+    assert (
+        train_split >= 0.0 and train_split <= 1.0
+    ), "train_split must be in range [0,1]"
 
     train_validation_set, test_set = get_MNIST_train_test_datasets(transforms, filepath)
 

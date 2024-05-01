@@ -1,7 +1,7 @@
 from typing import Tuple
 
-import torch
 import matplotlib.pyplot as plt
+import torch
 
 
 def plot_samples_per_class_histogram(y: torch.Tensor) -> None:
@@ -18,7 +18,10 @@ def plot_samples_per_class_histogram(y: torch.Tensor) -> None:
 
 
 def plot_one_sample_per_class_grayscale(
-    X: torch.Tensor, y: torch.Tensor, subplot_shape: Tuple[float, float], figsize: Tuple[float, float]
+    X: torch.Tensor,
+    y: torch.Tensor,
+    subplot_shape: Tuple[float, float],
+    figsize: Tuple[float, float],
 ) -> None:
     """
     Plots one instance per class as a grayscale image.
